@@ -1,0 +1,14 @@
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\bin\Debug\WebCrawler.exe.config
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\bin\Debug\WebCrawler.exe
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\bin\Debug\WebCrawler.pdb
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\App.g.cs
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler_MarkupCompile.cache
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler_MarkupCompile.lref
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\MainWindow.baml
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.g.resources
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.Properties.Resources.resources
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.csproj.GenerateResource.Cache
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.exe
+C:\Users\Admin\Desktop\Crawler\WebCrawler\WebCrawler\obj\Debug\WebCrawler.pdb
