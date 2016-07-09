@@ -34,6 +34,9 @@ namespace WebCrawler
             webAdess = AddAdressBox.Text;
             startTime = DateTime.Now;
             Console.Content = "Web adress: " + webAdess + ", start at: " + startTime;
+            Crawler webCrawler = new Crawler("http://makulec.pl/crawler/");
+            webCrawler.Run();
+            Console.Content += "\n" + webCrawler.ShowAllAddesses();
         }
     }
 }
