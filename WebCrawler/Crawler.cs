@@ -588,7 +588,7 @@ namespace WebCrawler
         public string ShowAllGraphVertex()
         {
             string b = null;
-            b += _graph.Vertices.Count() + "\n";
+            b += _graph.VertexCount + "\n";
             /*int i = 0;
             foreach (var vertex in _graph.Vertices)
             {
@@ -606,7 +606,7 @@ namespace WebCrawler
             /*int i = 0;
             foreach (var edge in _graph.Edges)
             {
-                b += i + ": " + edge + "\n";
+                b += i + ": " + edge + "\n"; 
                 i++;
             }*/
             return b;
@@ -616,6 +616,16 @@ namespace WebCrawler
         public int Count404()
         {
             return _404WebCount;
+        }
+
+        public void ReadGraphFromFile(string source)
+        {
+
+            using (var xreader = XmlReader.Create(source))
+            {
+                _graph.DeserializeFromGraphML(xreader, id => id, (source2, target, id) => new Edge<string>(source2, target));
+            }
+            
         }
     }
 }
