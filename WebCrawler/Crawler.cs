@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -61,7 +62,7 @@ namespace WebCrawler
         {
             _rootAddress = new Uri(address);
             _maxThread = threadLmit;
-            _robotsBannedAdressList = RobotsText.GetRobotsFile(_rootAddress.Host);
+            //_robotsBannedAdressList = RobotsText.GetRobotsFile(_rootAddress.Host);
         }
 
         public void Run()
@@ -377,7 +378,7 @@ namespace WebCrawler
         public void SaveGraph()
         {
 
-            using (var xwriter = XmlWriter.Create("C:\\Users\\Admin\\Desktop\\dump.graphml"))
+            using (var xwriter = XmlWriter.Create("C:\\Users\\Admin\\Desktop\\dump1.graphml"))
                 _graph.SerializeToGraphML<string, Edge<string>, BidirectionalGraph<string, Edge<string>>>(xwriter);
 
         }
@@ -626,6 +627,60 @@ namespace WebCrawler
                 _graph.DeserializeFromGraphML(xreader, id => id, (source2, target, id) => new Edge<string>(source2, target));
             }
             
+        }
+
+        public double PageRank(double alpha = 0.85)
+        {
+            Dictionary<string, double> pageRanks = new Dictionary<string, double>();
+            double averagePG = 0;
+            double averagePG_temp = -1;
+            int iteration = 0;
+            int iterationEqual = 0;
+            int n = _graph.VertexCount;
+
+            //initiation value
+            foreach (var vertex in _graph.Vertices)
+            {
+                pageRanks.Add(vertex, 0/n);
+            }
+
+
+            bool stopIteration = false;
+
+            while (!stopIteration)
+            {
+                if (averagePG == averagePG_temp)
+                {
+                    Console.WriteLine("AVERAGE IS THE SAME LIKE AVERAGE_TEMP");
+                    if (iterationEqual == 10)
+                        stopIteration = true;
+                    iterationEqual++;
+                }
+                else
+                    averagePG_temp = averagePG;
+                averagePG = 0;
+                iteration++;
+
+                if (iteration == 1)
+                    stopIteration = true;
+
+                foreach (var vertex in _graph.Vertices)
+                {
+                    double rankSum = 0;
+                    foreach (var inEdge in _graph.InEdges(vertex))
+                    {
+                        if (_graph.InDegree(inEdge.Source) != 0)
+                            rankSum += pageRanks[inEdge.Source]/_graph.InDegree(inEdge.Source);
+                        //Console.WriteLine("{0}/{1}", pageRanks[inEdge.Source], _graph.InDegree(inEdge.Source));
+                    }
+                    pageRanks[vertex] = (1 - alpha) + alpha*rankSum;
+                    averagePG += pageRanks[vertex];
+                }
+                averagePG = averagePG / n;
+                Console.WriteLine("{2}: After iteration {0} average is: {1}", iteration, averagePG, alpha);
+            }
+
+            return averagePG;
         }
     }
 }
